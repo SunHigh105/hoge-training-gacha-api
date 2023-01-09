@@ -8,26 +8,17 @@ const functions = require("firebase-functions");
 //   response.send("Hello from Firebase!");
 // });
 
-// require('dotenv').config();
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
 const app = express();
 
 app.use(cors({
-  // origin: process.env.FRONT_BASE_URL,
-  origin: 'http://127.0.0.1:5000',
+  origin: process.env.CLIENT_BASE_URL,
   credentials: true,
   optionsSuccessStatus: 200
-}))
-
-// const port = process.env.PORT || 3000;
-// app.listen(
-//   port,
-//   () => {
-//     console.log(`Listening on port ${port}`);
-//   }
-// );
+}));
 
 const firestore = require('./firestore');
 
@@ -41,8 +32,5 @@ app.get('/menus', async (req, res) => {
 });
 
 exports.app = functions
-  // .runWith({
-  //   secrets: ['FRONT_BASE_URL', 'FIREBASE_ADMIN_SDK_SECRET_KEY']
-  // })
   .https
   .onRequest(app);
