@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "home-training-gacha",
+    "prod": "home-training-gacha",
+    "dev": "home-training-gacha"
+  },
+  "targets": {},
+  "etags": {}
+}
