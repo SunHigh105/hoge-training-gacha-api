@@ -1,75 +1,54 @@
-# Home Training Gacha API
+# Home Training Gacha
 
 ## Requirements
 - Google Account
-- Google Cloud Project
-- node(v19.x)
+- node(v16.x)
+- npm
+- yarn
+- firebase CLI
+  - Install below command
+  ```
+  npm i -g firebase-tools
+  ```
 
 ## Setup
-### Google OAuth 2.0 Client ID
+### Firebase Project Setup
+#### Create Firebase Project
+- Log in [Firebase console](https://console.firebase.google.com/u/0/), click **[Create Project]** and follow instructions to create a project
+- After create project, change Firebase charge plan from "Spark" (free plan) to "Blaze" (pay-per-use plan)
 
-### Application
+#### Create Service Account Key
+- Move to project settings > service account
+  - URL: https://console.firebase.google.com/u/0/project/{YOUR_PROJECT_NAME}/settings/serviceaccounts/adminsdk
+- Select **[Firebase Admin SDK]**
+- Click **[Generate new private key]** to download json file
+- Rename downloaded json file to **serviceAccount.json** and move under the `functions/` directory
+
+### Application Setup
+- Execute below shell script
+  - Update `node_modules/` directory and generate `.env.dev`, `.env.prod` file in each directory in `client/` and `functions/`
 ```
-npm install
+sh first_setup.sh
 ```
 
-## Deployment(Firebase)
-- Install firebase CLI
-```
-npm i -g firebase-tools
-```
+### Emulate Application Locally
 - Login firebase
 ```
 firebase login
 ```
-- Init hosting
+- Execute shell script for emulate
 ```
-firebase init hosting
-```
-```
-=== Project Setup
-
-First, let's associate this project directory with a Firebase project.
-You can create multiple project aliases by running firebase use --add, 
-but for now we'll just set up a default project.
-
-? Please select an option: Use an existing project
-? Select a default Firebase project for this directory: home-training-gacha (home-training-gacha)
-i  Using project home-training-gacha (home-training-gacha)
-
-=== Hosting Setup
-
-Your public directory is the folder (relative to your project directory) that
-will contain Hosting assets to be uploaded with firebase deploy. If you
-have a build process for your assets, use your build's output directory.
-
-? What do you want to use as your public directory? public
-? Configure as a single-page app (rewrite all urls to /index.html)? No
-? Set up automatic builds and deploys with GitHub? No
-? File public/404.html already exists. Overwrite? Yes
-✔  Wrote public/404.html
-? File public/index.html already exists. Overwrite? Yes
-✔  Wrote public/index.html
-
-i  Writing configuration info to firebase.json...
-i  Writing project information to .firebaserc...
-
-✔  Firebase initialization complete!
-```
-- Init functiions
-```
-firebase init functions
-```
-```
-? What language would you like to use to write Cloud Functions? JavaScript
-? Do you want to use ESLint to catch probable bugs and enforce style? No
-✔  Wrote functions/package.json
-✔  Wrote functions/index.js
-✔  Wrote functions/.gitignore
-? Do you want to install dependencies with npm now? Yes
+sh ./emulator_dev.sh
 ```
 
-- Test api at local
+## Deployment(Firebase)
+- Login firebase
 ```
-firebase emulators:start
+firebase login
+```
+- Rewrite `.env.prod` enviroment variable `REACT_APP_API_BASE_URL` in the   `client/` directory
+- Rewrite `.env.prod` enviroment variable `CLIENT_BASE_URL` in the   `functions/` directory
+- Execute shell script for deploy
+```
+sh ./deploy_prod.sh
 ```
