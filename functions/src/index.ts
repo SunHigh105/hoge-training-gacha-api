@@ -1,12 +1,4 @@
-const functions = require("firebase-functions");
-
-// // Create and deploy your first functions
-// // https://firebase.google.com/docs/functions/get-started
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+import * as functions from "firebase-functions";
 
 require('dotenv').config();
 
@@ -22,11 +14,11 @@ app.use(cors({
 
 const firestore = require('./firestore');
 
-app.get('/', (req, res) => {
+app.get('/', (res: any) => {
   res.send('Simple REST API');
 });
 
-app.get('/menus', async (req, res) => {
+app.get('/menus', async (req: any, res: any) => {
   const response = await firestore.getData();
   res.json(response);
 });
