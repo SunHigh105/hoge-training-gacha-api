@@ -1,6 +1,6 @@
 interface TrainingPattern {
-  training: Array<Number>,
-  cardioHiit: Array<Number>
+  muscle: Array<Number>,
+  cardio: Array<Number>
 }
 
 interface Training {
@@ -11,10 +11,4 @@ interface Training {
   title: string,
   url: string,
   videoId: string,
-}
-
-interface FilterCondition {
-  channelId: Array<string>,
-  training: Array<string>,
-  cardioHiit: Array<string>
 }
