@@ -2,16 +2,12 @@ const constants = require('./constants');
 
 const createTrainingMenu = (
   trainingList: Array<Training>,
-  trainingPattern: TrainingPattern,
-  filterCondition: FilterCondition
+  minutePattern: Array<Number>,
+  categories: Array<string>
 ) => {
   // TODO: トレーニングの重複をなくす
   try {
-    const trainings = trainingPattern.training.map((minute: Number) => {
-      const categories = getFilterdCategories(
-        constants.CATEGORY_TRAININGS,
-        filterCondition.training
-      );
+    const trainings = minutePattern.map((minute: Number) => {
       const selectedCategory = categories[getRandomValue(categories.length) - 1];
       
       const filteredList = trainingList.filter((training: Training) => {
@@ -25,7 +21,7 @@ const createTrainingMenu = (
         : {};
     });
     
-    return [...trainings];
+    return trainings;
   } catch (e) {
     console.log(e);
     return 'Create training menu failed.';
@@ -33,14 +29,14 @@ const createTrainingMenu = (
 };
 
 const getFilterdCategories = (categories: Object, filterCondition: Array<string>) => {
-  if (filterCondition.length === 0) {
-    return Object.values(categories);
-  }
-
   return filterCondition.map((key: string) => {
     const index = Object.keys(categories).indexOf(key);
     return Object.values(categories)[index];
   });
+};
+
+const getMinutePattern = (minutePatterns: Array<TrainingPattern>) => {
+  return minutePatterns[getRandomValue(minutePatterns.length) - 1];
 };
 
 const getRandomValue = (max: number) => {
@@ -50,4 +46,5 @@ const getRandomValue = (max: number) => {
 module.exports = {
   createTrainingMenu,
   getFilterdCategories,
+  getMinutePattern,
 };
