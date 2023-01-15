@@ -1,4 +1,4 @@
-const CATEGORY_TRAININGS = {
+const CATEGORY_MUSCLE_TRAININGS = {
   abs: '腹筋',
   leg: '脚',
   hip: '尻',
@@ -16,62 +16,66 @@ const CATEGORY_STRETCH = {
 
 const TEN_MIN_PATTERNS: Array<TrainingPattern> = [
   {
-    training: [5],
-    cardioHiit: [5], 
+    muscle: [5],
+    cardio: [5], 
   },
   {
-    training: [5, 5],
-    cardioHiit: []
+    muscle: [5, 5],
+    cardio: []
   },
   {
-    training: [10],
-    cardioHiit: []
+    muscle: [10],
+    cardio: []
   },
   {
-    training: [],
-    cardioHiit: [10],
+    muscle: [],
+    cardio: [10],
   },
 ];
 
 const TWENTY_MIN_PATTERNS: Array<TrainingPattern> = [
   {
-    training: [5, 5],
-    cardioHiit: [5, 5], 
+    muscle: [5, 5],
+    cardio: [5, 5], 
   },
   {
-    training: [5, 5],
-    cardioHiit: [10], 
+    muscle: [5, 5],
+    cardio: [10], 
   },
   {
-    training: [10],
-    cardioHiit: [10],
+    muscle: [10],
+    cardio: [10],
   },
 ];
 
 const THIRTY_MIN_PATTERNS: Array<TrainingPattern> = [
   {
-    training: [5, 5, 5],
-    cardioHiit: [5, 5, 5], 
+    muscle: [5, 5, 5],
+    cardio: [5, 5, 5], 
   },
   {
-    training: [5, 5, 10],
-    cardioHiit: [10], 
+    muscle: [5, 5, 10],
+    cardio: [10], 
   },
   {
-    training: [10, 10],
-    cardioHiit: [10],
+    muscle: [10, 10],
+    cardio: [10],
   },
   {
-    training: [10],
-    cardioHiit: [10, 10],
+    muscle: [10],
+    cardio: [10, 10],
   },
 ];
 
+const MINUTE_PATTERN = {
+  ten: TEN_MIN_PATTERNS,
+  twenty: TWENTY_MIN_PATTERNS,
+  thirty: THIRTY_MIN_PATTERNS
+}
+
 module.exports = {
-  CATEGORY_TRAININGS,
+  CATEGORY_MUSCLE_TRAININGS,
   CATEGORY_CARDIO_HIIT,
   CATEGORY_STRETCH,
-  TEN_MIN_PATTERNS,
-  TWENTY_MIN_PATTERNS,
-  THIRTY_MIN_PATTERNS
+  MINUTE_PATTERN
 }
