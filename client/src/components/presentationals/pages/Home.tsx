@@ -1,7 +1,10 @@
 import React, {FC} from 'react';
 import { Header, Container, Card } from 'semantic-ui-react';
 
+import { CategorySelection } from '../parts/CategorySelection';
+
 import { MINUTES } from '../../../constants/home';
+import { VideoViewerContainer } from '../../containers/VideoViewer';
 
 export interface homeProps {
   
@@ -11,6 +14,7 @@ export const Home: FC<homeProps> = ({}) => (
   <div>
     <Header as='h2' textAlign='center'>Home Training Gacha</Header>
     <Container>
+      <CategorySelection />
       <Card.Group centered>
         {MINUTES.map((minute) => (
           <Card key={minute} href='#'>
@@ -20,6 +24,7 @@ export const Home: FC<homeProps> = ({}) => (
           </Card>
         ))}
       </Card.Group>
+      <VideoViewerContainer />
     </Container>
   </div>
 );
