@@ -1,7 +1,11 @@
 import React, {FC, useState} from "react";
+import { SemanticCOLORS } from "semantic-ui-react";
 import { VideoViewer } from "../presentationals/parts/VideoViewer";
 
-export const VideoViewerContainer: FC<{}> = () => {
+export const VideoViewerContainer: FC<{minute: Number, color: SemanticCOLORS}> = ({
+  minute,
+  color
+}) => {
   const [isDisplayed, setIsDisplayed] = useState(false);
 
   const handleViewer = () => {
@@ -12,6 +16,7 @@ export const VideoViewerContainer: FC<{}> = () => {
     <VideoViewer
       isDisplayed={isDisplayed}
       handleViewer={handleViewer}
+      triggerButton={{text: `${minute} min`, color: color}}
     />
   )
 }

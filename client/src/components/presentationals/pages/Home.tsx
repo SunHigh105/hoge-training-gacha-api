@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import { Header, Container, Card } from 'semantic-ui-react';
+import { Header, Container, Card, Grid } from 'semantic-ui-react';
 
 import { CategorySelection } from '../parts/CategorySelection';
 
-import { MINUTES } from '../../../constants/home';
+import { MINUTES, COLOR_PER_MINUTE } from '../../../constants/home';
 import { VideoViewerContainer } from '../../containers/VideoViewer';
 
 export interface homeProps {
@@ -12,19 +12,16 @@ export interface homeProps {
 
 export const Home: FC<homeProps> = ({}) => (
   <div>
-    <Header as='h2' textAlign='center'>Home Training Gacha</Header>
+    <Header as='h1' textAlign='center'>Home Training Gacha</Header>
     <Container>
-      <CategorySelection />
-      <Card.Group centered>
-        {MINUTES.map((minute) => (
-          <Card key={minute} href='#'>
-            <Card.Content>
-              <Card.Header>{minute - 9} ~ {minute} min</Card.Header>
-            </Card.Content>
-          </Card>
+      {/* <CategorySelection /> */}
+      <Grid>
+        {MINUTES.map((minute, index) => (
+          <Grid.Row key={minute}>
+            <VideoViewerContainer minute={minute} color={COLOR_PER_MINUTE[index]} />
+          </Grid.Row>
         ))}
-      </Card.Group>
-      <VideoViewerContainer />
+      </Grid>
     </Container>
   </div>
 );
