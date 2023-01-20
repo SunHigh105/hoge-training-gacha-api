@@ -1,16 +1,13 @@
 import React, {FC} from 'react';
 import { Header, Container, Card, Grid } from 'semantic-ui-react';
+import { minute } from '../../../definitions/types';
 
 import { CategorySelection } from '../parts/CategorySelection';
 
-import { MINUTES, COLOR_PER_MINUTE } from '../../../constants/home';
+import { MINUTES, COLOR_PER_MINUTE } from '../../../definitions/constants';
 import { VideoViewerContainer } from '../../containers/VideoViewer';
 
-export interface homeProps {
-  
-}
-
-export const Home: FC<homeProps> = ({}) => (
+export const Home: FC<{}> = () => (
   <div>
     <Header as='h1' textAlign='center'>Home Training Gacha</Header>
     <Container>
