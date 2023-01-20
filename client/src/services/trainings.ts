@@ -1,12 +1,11 @@
 import { ApiConfig, createAxiosInstance } from "./common";
+import { MINUTE_STRING } from "../definitions/constants";
+import { minute, muscle, cardio } from "../definitions/types";
 
-const succeededResponse = { isSucceeded: true };
-const failedResponse = { isSucceeded: false };
-
-export const getTrainigMenus = async () => {
+export const getTrainigMenus = async (queryParameter: string) => {
   const instance = createAxiosInstance();
   try {
-    const res = await instance.get('/menus');
+    const res = await instance.get(`/training_menus?${queryParameter}`);
     console.log(res);
     return res.data;
 
@@ -17,3 +16,19 @@ export const getTrainigMenus = async () => {
     };
   }
 };
+
+export const buildQueryParameter = (
+  minute: minute,
+  muscle: Array<muscle> = [],
+  cardio: Array<cardio> = []
+) => {
+  const minuteQuery = `minute=${MINUTE_STRING[minute]}`;
+  const muscleQuery = muscle.length >= 1
+    ? `&${muscle.map(m => `muscle[]=${m}`).join('')}`
+    : '';
+  const cardioQuery = cardio.length >= 1
+    ? `&${cardio.map(c => `cardio[]=${c}`).join('')}`
+    : '';
+  
+  return `${minuteQuery}${muscleQuery}${cardioQuery}`;
+}
