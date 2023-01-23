@@ -1,25 +1,30 @@
 import React, {FC} from 'react';
-import { Header, Container, Card } from 'semantic-ui-react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Header, Container, Grid, Button } from 'semantic-ui-react';
 
-import { MINUTES } from '../../../constants/home';
+import { CategorySelection } from '../parts/CategorySelection';
 
-export interface homeProps {
-  
-}
+import { MINUTES, COLOR_PER_MINUTE } from '../../../definitions/constants';
 
-export const Home: FC<homeProps> = ({}) => (
+export const Home: FC<{}> = () => (
   <div>
-    <Header as='h2' textAlign='center'>Home Training Gacha</Header>
+    <Header as='h1' textAlign='center'>Select Training Time</Header>
     <Container>
-      <Card.Group centered>
-        {MINUTES.map((minute) => (
-          <Card key={minute} href='#'>
-            <Card.Content>
-              <Card.Header>{minute - 9} ~ {minute} min</Card.Header>
-            </Card.Content>
-          </Card>
+      {/* <CategorySelection /> */}
+      <Grid>
+        {MINUTES.map((minute, index) => (
+          <Grid.Row key={minute}>
+            <Button fluid 
+              color={COLOR_PER_MINUTE[index]}
+              size='huge'
+              as={Link}
+              to={`/player/minute/${minute}`}
+            >
+              {`${minute} min`}
+            </Button>
+          </Grid.Row>
         ))}
-      </Card.Group>
+      </Grid>
     </Container>
   </div>
 );
