@@ -34,6 +34,7 @@ export const Player: FC<{
         </SwiperSlide>
       ))}
     </Swiper>
+    <Header as='h2' textAlign='center' dividing>Menu</Header>
     <Grid>
       {menus.map(menu => (
         <Grid.Row key={menu.videoId} columns={2}>
