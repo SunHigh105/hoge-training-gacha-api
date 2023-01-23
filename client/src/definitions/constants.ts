@@ -1,7 +1,8 @@
 import { SemanticCOLORS } from "semantic-ui-react";
 import { minute } from "./types";
 
-export const MINUTES: Array<minute> = [10, 20, 30, 40, 50, 60];
+// TODO: 40, 50, 60を増やす
+export const MINUTES: Array<minute> = [10, 20, 30];
 
 export const COLOR_PER_MINUTE: Array<SemanticCOLORS> = ['teal', 'green', 'olive', 'yellow', 'orange', 'red'];
 
