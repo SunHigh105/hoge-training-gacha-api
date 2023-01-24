@@ -4,10 +4,9 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-ro
 import { HomeContainer } from '../containers/Home';
 import { PlayerContainer } from '../containers/Player';
 
-export interface AppProps {
-}
+import '../../css/App.css';
 
-export const App: FC<AppProps> = ({
+export const App: FC<{}> = ({
 }) => {
   return (
     <div>
@@ -18,7 +17,7 @@ export const App: FC<AppProps> = ({
           to='/'
         />
       </Menu>
-      <Container text style={{ marginTop: '1.5em' }}>
+      <Container className='app-container'>
         <Switch>
           <Route path='/' exact component={HomeContainer} />
           <Route path='/player/minute/:minute' component={PlayerContainer} />
