@@ -1,0 +1,9 @@
+.player-container {
+  margin: 0 auto;
+  max-width: 850px;
+}
+
+.player-embed {
+  margin: 0 auto;
+  max-width: 90%;
+}

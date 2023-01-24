@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
-import { Embed, Grid, Image, Header } from 'semantic-ui-react';
+import { Grid, Image, Header, Segment } from 'semantic-ui-react';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 import { Training } from '../../../definitions/interfaces';
 import { minute } from '../../../definitions/types';
+import { Iframe } from '../parts/Iframe';
+
+import '../../../css/Player.css';
 
 export const Player: FC<{
   minute: minute,
@@ -14,7 +17,7 @@ export const Player: FC<{
   minute = 10,
   menus = []
 }) => (
-  <div>
+  <div className='player-container'>
     <Header as='h1' textAlign='center'>{`${minute} min Training`}</Header>
     <Swiper
       modules={[Navigation, Pagination]}
@@ -23,14 +26,9 @@ export const Player: FC<{
     >
       {menus.map(menu => (
         <SwiperSlide key={menu.videoId}>
-          <Embed
-            autoplay={true} 
-            id={menu.videoId}
-            iframe={{
-              allowFullScreen: true
-            }}
-            source='youtube'
-          />
+          <Segment basic>
+            <Iframe videoId={menu.videoId} />
+          </Segment>
         </SwiperSlide>
       ))}
     </Swiper>
