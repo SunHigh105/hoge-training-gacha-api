@@ -1,16 +1,17 @@
 import React, {FC} from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { Header, Container, Grid, Button } from 'semantic-ui-react';
-
-import { CategorySelection } from '../parts/CategorySelection';
+import { Header, Container, Grid, Button, Segment } from 'semantic-ui-react';
 
 import { MINUTES, COLOR_PER_MINUTE } from '../../../definitions/constants';
+import { PartSelectionContainer } from '../../containers/PartSelection';
 
 export const Home: FC<{}> = () => (
   <div>
     <Header as='h1' textAlign='center'>Select Training Time</Header>
     <Container>
-      {/* <CategorySelection /> */}
+      <Segment basic>
+        <PartSelectionContainer />
+      </Segment>
       <Grid>
         {MINUTES.map((minute, index) => (
           <Grid.Row key={minute}>

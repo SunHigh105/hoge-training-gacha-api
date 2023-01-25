@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
+import React from "react";
 import { Home } from "../presentationals/pages/Home";
 
-export const HomeContainer: FC = () => {
-  return <Home />;
+export const HomeContainer = () => {
+  return <Home />
 };
