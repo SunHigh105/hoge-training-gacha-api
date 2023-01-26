@@ -3,7 +3,6 @@
   max-width: 850px;
 }
 
-.player-embed {
-  margin: 0 auto;
-  max-width: 90%;
+.player-retry-button-wrapper {
+  text-align: center;
 }

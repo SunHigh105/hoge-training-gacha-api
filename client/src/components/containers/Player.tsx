@@ -22,11 +22,15 @@ export const PlayerContainer: FC<{}> = ({}) => {
     setMenus(trainingMenu);
 
     setIsLoading(false);
-  } 
+  };
+
+  const handleRetryButton = () => {
+    getTrainingMenu();
+  };
 
   useEffect(() => {
     getTrainingMenu();
   }, []);
 
-  return isLoading ? <Loading /> : <Player minute={minute} menus={menus}/>
+  return isLoading ? <Loading /> : <Player minute={minute} menus={menus} handleRetryButton={handleRetryButton}/>
 }

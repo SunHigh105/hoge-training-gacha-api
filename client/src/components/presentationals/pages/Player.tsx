@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Grid, Image, Header, Segment } from 'semantic-ui-react';
+import { Grid, Image, Header, Segment, Button, Icon } from 'semantic-ui-react';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
@@ -12,13 +12,20 @@ import '../../../css/Player.css';
 
 export const Player: FC<{
   minute: minute,
-  menus: Training[]
+  menus: Training[],
+  handleRetryButton: () => void;
 }> = ({
   minute = 10,
-  menus = []
+  menus = [],
+  handleRetryButton = () => {}
 }) => (
   <div className='player-container'>
     <Header as='h1' textAlign='center'>{`${minute} min Training`}</Header>
+    <div className='player-retry-button-wrapper'>
+      <Button icon labelPosition='left' onClick={handleRetryButton}>
+        <Icon name='redo' />Retry
+      </Button>
+    </div>
     <Swiper
       modules={[Navigation, Pagination]}
       navigation
