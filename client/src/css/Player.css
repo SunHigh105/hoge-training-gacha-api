@@ -1,0 +1,8 @@
+.player-container {
+  margin: 0 auto;
+  max-width: 850px;
+}
+
+.player-retry-button-wrapper {
+  text-align: center;
+}
