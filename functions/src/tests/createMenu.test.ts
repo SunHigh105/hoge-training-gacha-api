@@ -3,14 +3,18 @@ const trainingList = require('./json/trainingList.json');
 
 describe('createTrainingMenu', () => {
   test('Category specified', () => {
-    const pattern = [5, 5, 5];
-    const categories = ['腹筋', '背中']
-    const menu = createMenu.createTrainingMenu(trainingList, pattern, categories);
+    const minute = 5;
+    const categories = ['有酸素']
+    const menu = createMenu.createTrainingMenu(trainingList, minute, categories);
     console.log(menu);
     expect(true);
   });
 
   test('No category specified', () => {
+    // TODO
+  });
+
+  test('Invalid category', () => {
     // TODO
   });
 });
