@@ -5,22 +5,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 import { Training } from '../../../definitions/interfaces';
-import { minute } from '../../../definitions/types';
 import { Iframe } from '../parts/Iframe';
 
 import '../../../css/Player.css';
 
 export const Player: FC<{
-  minute: minute,
+  totalMinute: Number,
   menus: Training[],
   handleRetryButton: () => void;
 }> = ({
-  minute = 10,
+  totalMinute = 0,
   menus = [],
   handleRetryButton = () => {}
 }) => (
   <div className='player-container'>
-    <Header as='h1' textAlign='center'>{`${minute} min Training`}</Header>
+    <Header as='h1' textAlign='center'>{`Training (${totalMinute} min)`}</Header>
     <div className='player-retry-button-wrapper'>
       <Button icon labelPosition='left' onClick={handleRetryButton}>
         <Icon name='redo' />Retry
