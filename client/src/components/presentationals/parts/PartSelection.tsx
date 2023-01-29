@@ -3,10 +3,12 @@ import { Accordion, Checkbox, Grid, Icon } from 'semantic-ui-react';
 
 export const PartSelection: FC<{
   isPartSelectionOpen: boolean,
-  handlePartSelection: () => void
+  handlePartSelection: () => void,
+  handleCheckbox: (e: React.FormEvent<HTMLInputElement>, data: any) => void
 }> = ({
   isPartSelectionOpen = false,
-  handlePartSelection = () => {}
+  handlePartSelection = () => {},
+  handleCheckbox = () => {}
 }) => (
   <Accordion>
     <Accordion.Title
@@ -20,16 +22,16 @@ export const PartSelection: FC<{
       <Grid columns={4}>
         <Grid.Row>
           <Grid.Column>
-            <Checkbox label='腹筋' />
+            <Checkbox onChange={handleCheckbox} label='腹筋' value='abs' />
           </Grid.Column>
           <Grid.Column>
-            <Checkbox label='脚' />
+            <Checkbox onChange={handleCheckbox} label='脚' value='leg'/>
           </Grid.Column>
           <Grid.Column>
-            <Checkbox label='尻' />
+            <Checkbox onChange={handleCheckbox} label='尻' value='hip'/>
           </Grid.Column>
           <Grid.Column>
-            <Checkbox label='背中' />
+            <Checkbox onChange={handleCheckbox} label='背中' value='back' />
           </Grid.Column>
         </Grid.Row>
       </Grid>
