@@ -20,6 +20,7 @@ export const App: FC<{}> = ({
       <Container className='app-container'>
         <Switch>
           <Route path='/' exact component={HomeContainer} />
+          <Route path='/player/minute/:minute/muscle/:muscle' component={PlayerContainer} />
           <Route path='/player/minute/:minute' component={PlayerContainer} />
           <Route path='*'>
             <Redirect to='/' />
