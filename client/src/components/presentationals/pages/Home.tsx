@@ -5,16 +5,18 @@ import { Header, Container, Grid, Button, Segment } from 'semantic-ui-react';
 import { MINUTES, COLOR_PER_MINUTE } from '../../../definitions/constants';
 import { PartSelectionContainer } from '../../containers/PartSelection';
 
+import '../../../css/Home.css';
+
 export const Home: FC<{}> = () => (
   <div>
     <Header as='h1' textAlign='center'>Select Training Time</Header>
     <Container>
+      <div className='home-container'>
       <Segment basic>
         <PartSelectionContainer />
       </Segment>
-      <Grid>
         {MINUTES.map((minute, index) => (
-          <Grid.Row key={minute}>
+          <div className='home-button-wrapper' key={minute}>
             <Button fluid 
               color={COLOR_PER_MINUTE[index]}
               size='huge'
@@ -23,9 +25,9 @@ export const Home: FC<{}> = () => (
             >
               {`${minute} min`}
             </Button>
-          </Grid.Row>
+          </div>
         ))}
-      </Grid>
+      </div>
     </Container>
   </div>
 );

@@ -38,7 +38,7 @@ app.get('/training_menus', async (req: any, res: any) => {
       ? createMenu.getFilterdCategories(constants.CATEGORY_CARDIO_HIIT, req.query.cardio)
       : Object.values(constants.CATEGORY_CARDIO_HIIT);
     
-    const minutePattern = createMenu.getMinutePattern(constants.MINUTE_PATTERN[req.query.minute]);
+    const minutePattern = constants.MINUTE_PATTERN[req.query.minute];
 
     const trainingList = await firestore.getData([...muscleCategories, ...cardioCategories]);
 
@@ -53,7 +53,10 @@ app.get('/training_menus', async (req: any, res: any) => {
       cardioCategories
     );
 
-    res.json([...muscleTrainings, ...cardioHiits]);
+    res.json({
+      totalMinute: muscleTrainings.totalMinute + cardioHiits.totalMinute,
+      trainings: [...muscleTrainings.trainings, ...cardioHiits.trainings]
+    });
   } catch (e) {
     if (e instanceof Error) {
       res.json({"Create training menu failed.": e.message});

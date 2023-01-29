@@ -12,6 +12,7 @@ export const PlayerContainer: FC<{}> = ({}) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [menus, setMenus] = useState<Training[]>([]);
+  const [totalMinute, setTotalMinute] = useState<Number>(0);
 
   const getTrainingMenu = async () => {
     setIsLoading(true);
@@ -19,7 +20,9 @@ export const PlayerContainer: FC<{}> = ({}) => {
     const query = buildQueryParameter(minute);
     const trainingMenu = await getTrainigMenus(query);
 
-    setMenus(trainingMenu);
+    setTotalMinute(trainingMenu.totalMinute);
+
+    setMenus(trainingMenu.trainings);
 
     setIsLoading(false);
   };
@@ -32,5 +35,8 @@ export const PlayerContainer: FC<{}> = ({}) => {
     getTrainingMenu();
   }, []);
 
-  return isLoading ? <Loading /> : <Player minute={minute} menus={menus} handleRetryButton={handleRetryButton}/>
+  // TODO: Error Handling
+  return isLoading 
+    ? <Loading />
+    : <Player totalMinute={totalMinute} menus={menus} handleRetryButton={handleRetryButton}/>
 }

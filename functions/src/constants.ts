@@ -14,68 +14,18 @@ const CATEGORY_STRETCH = {
   strech: 'ストレッチ'
 };
 
-const TEN_MIN_PATTERNS: Array<TrainingPattern> = [
-  {
-    muscle: [5],
-    cardio: [5], 
-  },
-  {
-    muscle: [5, 5],
-    cardio: []
-  },
-  {
-    muscle: [10],
-    cardio: []
-  },
-  {
-    muscle: [],
-    cardio: [10],
-  },
-];
-
-const TWENTY_MIN_PATTERNS: Array<TrainingPattern> = [
-  {
-    muscle: [5, 5],
-    cardio: [5, 5], 
-  },
-  {
-    muscle: [5, 5],
-    cardio: [10], 
-  },
-  {
-    muscle: [10],
-    cardio: [10],
-  },
-];
-
-const THIRTY_MIN_PATTERNS: Array<TrainingPattern> = [
-  {
-    muscle: [5, 5, 5],
-    cardio: [5, 5, 5], 
-  },
-  {
-    muscle: [5, 5, 10],
-    cardio: [10], 
-  },
-  {
-    muscle: [10, 10],
-    cardio: [10],
-  },
-  {
-    muscle: [10],
-    cardio: [10, 10],
-  },
-];
-
 const MINUTE_PATTERN = {
-  ten: TEN_MIN_PATTERNS,
-  twenty: TWENTY_MIN_PATTERNS,
-  thirty: THIRTY_MIN_PATTERNS
+  ten: {muscle: 5, cardio: 5},
+  twenty: {muscle: 10, cardio: 10},
+  thirty: {muscle: 15, cardio: 15},
+  forty: {muscle: 20, cardio: 20},
+  fifty: {muscle: 20, cardio: 30},
+  sixty: {muscle: 30, cardio: 30}
 }
 
 module.exports = {
   CATEGORY_MUSCLE_TRAININGS,
   CATEGORY_CARDIO_HIIT,
   CATEGORY_STRETCH,
-  MINUTE_PATTERN
+  MINUTE_PATTERN,
 }
