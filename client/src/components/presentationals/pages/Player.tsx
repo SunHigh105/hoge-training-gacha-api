@@ -21,7 +21,7 @@ export const Player: FC<{
   <div className='player-container'>
     <Header as='h1' textAlign='center'>{`Training (${totalMinute} min)`}</Header>
     <div className='player-retry-button-wrapper'>
-      <Button icon labelPosition='left' onClick={handleRetryButton}>
+      <Button icon labelPosition='left' color='olive' onClick={handleRetryButton}>
         <Icon name='redo' />Retry
       </Button>
     </div>
