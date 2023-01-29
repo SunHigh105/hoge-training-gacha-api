@@ -6,7 +6,6 @@ export const getTrainigMenus = async (queryParameter: string) => {
   const instance = createAxiosInstance();
   try {
     const res = await instance.get(`/training_menus?${queryParameter}`);
-    console.log(res);
     return res.data;
 
   } catch (e) {
@@ -24,10 +23,10 @@ export const buildQueryParameter = (
 ) => {
   const minuteQuery = `minute=${MINUTE_STRING[minute]}`;
   const muscleQuery = muscle.length >= 1
-    ? `&${muscle.map(m => `muscle[]=${m}`).join('')}`
+    ? `&${muscle.map(m => `muscle[]=${m}`).join('&')}`
     : '';
   const cardioQuery = cardio.length >= 1
-    ? `&${cardio.map(c => `cardio[]=${c}`).join('')}`
+    ? `&${cardio.map(c => `cardio[]=${c}`).join('&')}`
     : '';
   
   return `${minuteQuery}${muscleQuery}${cardioQuery}`;

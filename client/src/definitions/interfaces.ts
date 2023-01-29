@@ -10,4 +10,5 @@ export interface Training {
 
 export interface PlayParams {
   minute: '10' | '20' | '30' | '40' | '50' | '60',
+  muscle: string | undefined,
 }
