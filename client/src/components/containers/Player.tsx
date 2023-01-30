@@ -5,6 +5,7 @@ import { minute, muscle } from '../../definitions/types';
 import { buildQueryParameter, getTrainigMenus } from '../../services/trainings';
 import { Player } from '../presentationals/pages/Player';
 import { Loading } from '../presentationals/parts/Loading';
+import { Error } from '../presentationals/pages/Error';
 
 export const PlayerContainer: FC<{}> = ({}) => {
   const params = useParams<PlayParams>();
@@ -16,18 +17,22 @@ export const PlayerContainer: FC<{}> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [menus, setMenus] = useState<Training[]>([]);
   const [totalMinute, setTotalMinute] = useState<Number>(0);
+  const [isError, setIsError] = useState<boolean>(false);
 
   const getTrainingMenu = async () => {
     setIsLoading(true);
     
     const query = buildQueryParameter(minute, muscle);
-    const trainingMenu = await getTrainigMenus(query);
-
-    setTotalMinute(trainingMenu.totalMinute);
-
-    setMenus(trainingMenu.trainings);
+    const res = await getTrainigMenus(query);
+    if (res.isSucceed) {
+      setTotalMinute(res.data.totalMinute);
+      setMenus(res.data.trainings);
+      setIsLoading(false);
+      return;
+    }
 
     setIsLoading(false);
+    setIsError(true);
   };
 
   const handleRetryButton = () => {
@@ -38,8 +43,8 @@ export const PlayerContainer: FC<{}> = ({}) => {
     getTrainingMenu();
   }, []);
 
-  // TODO: Error Handling
-  return isLoading 
-    ? <Loading />
+  if (isLoading) return <Loading />;
+  return isError 
+    ? <Error />
     : <Player totalMinute={totalMinute} menus={menus} handleRetryButton={handleRetryButton}/>
 }

@@ -59,10 +59,12 @@ app.get('/training_menus', async (req: any, res: any) => {
     });
   } catch (e) {
     if (e instanceof Error) {
-      res.json({"Create training menu failed.": e.message});
+      res.status(400);
+      res.json({error: e.message});
       return;
     }
-    res.json(["Unexpected error."]);
+    res.status(500);
+    res.json({error: "Unexpected error occured."});
   }
 });
 
