@@ -6,13 +6,17 @@ export const getTrainigMenus = async (queryParameter: string) => {
   const instance = createAxiosInstance();
   try {
     const res = await instance.get(`/training_menus?${queryParameter}`);
-    return res.data;
-
+    
+    if (res.status === 200) {
+      return {
+        isSucceed: true,
+        data: res.data
+      };
+    }
+    
+    return {isSucceed: false};
   } catch (e) {
-    return {
-      isSucceed: false,
-      error: e
-    };
+    return {isSucceed: false};
   }
 };
 
