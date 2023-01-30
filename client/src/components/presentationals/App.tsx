@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
-import { Menu, Container } from 'semantic-ui-react';
+import { Menu, Container, Modal } from 'semantic-ui-react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { HomeContainer } from '../containers/Home';
 import { PlayerContainer } from '../containers/Player';
 
 import '../../css/App.css';
+import { InstructionModalContainer } from '../containers/InstructionModal';
 
 export const App: FC<{}> = ({
 }) => {
@@ -12,10 +13,16 @@ export const App: FC<{}> = ({
     <div>
       <Menu pointing secondary>
         <Menu.Item
+          header
           name='home training gacha'
           as={Link}
           to='/'
         />
+        <Menu.Menu position='right'>
+          <Menu.Item>
+            <InstructionModalContainer />
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
       <Container className='app-container'>
         <Switch>
