@@ -25,7 +25,7 @@ export const Player: FC<{
         <Icon name='redo' />Retry
       </Button>
     </div>
-    <Swiper
+    {/* <Swiper
       modules={[Navigation, Pagination]}
       navigation
       pagination={{clickable: true}}
@@ -37,16 +37,30 @@ export const Player: FC<{
           </Segment>
         </SwiperSlide>
       ))}
-    </Swiper>
+    </Swiper> */}
     <Header as='h2' textAlign='center' dividing>Menu</Header>
     <Grid>
       {menus.map(menu => (
         <Grid.Row key={menu.videoId} columns={2}>
           <Grid.Column width={5}>
-            <Image src={menu.thumbnail} />
+            <Image
+              as='a'
+              className='player-video-thumbnail'
+              href={`https://www.youtube.com/watch?v=${menu.videoId}`}
+              target='_blank'
+              rel='noreferrer'
+              src={menu.thumbnail}
+            />
           </Grid.Column>
           <Grid.Column width={11}>
-            {menu.title}
+            <a
+              className='player-video-title'
+              href={`https://www.youtube.com/watch?v=${menu.videoId}`}
+              target='_blank'
+              rel='noreferrer'
+            >
+              {menu.title}
+            </a>
           </Grid.Column>
         </Grid.Row>
       ))}

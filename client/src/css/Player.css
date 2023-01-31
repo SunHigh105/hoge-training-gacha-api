@@ -6,3 +6,16 @@
 .player-retry-button-wrapper {
   text-align: center;
 }
+
+.player-video-thumbnail:hover {
+  opacity: 0.7;
+}
+
+.player-video-title,
+.player-video-title:hover {
+  color: rgba(0,0,0,.87);
+}
+
+.player-video-title:hover {
+  text-decoration: underline;
+}
