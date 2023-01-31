@@ -14,9 +14,7 @@ export const App: FC<{}> = ({
       <header className='app-header'>
         <div className='app-header-wrapper'>
           <Link className='app-header-home' to='/'>Home Training Gacha</Link>
-          <div className='app-header-modal'>
-            <InstructionModalContainer />
-          </div>
+          <InstructionModalContainer />
         </div>
       </header>
       <Container className='app-container'>
