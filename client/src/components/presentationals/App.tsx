@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Menu, Container, Modal } from 'semantic-ui-react';
+import { Menu, Container, Modal, Item } from 'semantic-ui-react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { HomeContainer } from '../containers/Home';
 import { PlayerContainer } from '../containers/Player';
@@ -11,19 +11,14 @@ export const App: FC<{}> = ({
 }) => {
   return (
     <div>
-      <Menu pointing secondary>
-        <Menu.Item
-          header
-          name='home training gacha'
-          as={Link}
-          to='/'
-        />
-        <Menu.Menu position='right'>
-          <Menu.Item>
+      <header className='app-header'>
+        <div className='app-header-wrapper'>
+          <Link className='app-header-home' to='/'>Home Training Gacha</Link>
+          <div className='app-header-modal'>
             <InstructionModalContainer />
-          </Menu.Item>
-        </Menu.Menu>
-      </Menu>
+          </div>
+        </div>
+      </header>
       <Container className='app-container'>
         <Switch>
           <Route path='/' exact component={HomeContainer} />
