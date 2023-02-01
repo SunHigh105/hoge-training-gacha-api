@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { Container } from 'semantic-ui-react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { HomeContainer } from '../containers/Home';
 import { PlayerContainer } from '../containers/Player';
@@ -17,7 +16,7 @@ export const App: FC<{}> = ({
           <InstructionModalContainer />
         </div>
       </header>
-      <Container className='app-container'>
+      <div className='app-container'>
         <Switch>
           <Route path='/' exact component={HomeContainer} />
           <Route path='/player/minute/:minute/muscle/:muscle' component={PlayerContainer} />
@@ -26,7 +25,7 @@ export const App: FC<{}> = ({
             <Redirect to='/' />
           </Route>
         </Switch>
-      </Container>
+      </div>
     </div>
   )
 };
