@@ -1,6 +1,8 @@
 import React, {FC} from 'react';
 import { Accordion, Checkbox, Grid, Icon } from 'semantic-ui-react';
 
+import '../../../css/PartSelection.css';
+
 export const PartSelection: FC<{
   isPartSelectionOpen: boolean,
   handlePartSelection: () => void,
@@ -10,7 +12,7 @@ export const PartSelection: FC<{
   handlePartSelection = () => {},
   handleCheckbox = () => {}
 }) => (
-  <Accordion>
+  <Accordion className='part-selection'>
     <Accordion.Title
       active={isPartSelectionOpen}
       onClick={handlePartSelection}
