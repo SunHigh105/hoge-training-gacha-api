@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Menu, Container, Modal, Item } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { HomeContainer } from '../containers/Home';
 import { PlayerContainer } from '../containers/Player';
