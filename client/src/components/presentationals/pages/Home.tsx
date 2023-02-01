@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { Header, Container, Button, Segment } from 'semantic-ui-react';
+import { Header, Container, Button } from 'semantic-ui-react';
 
 import { MINUTES, COLOR_PER_MINUTE } from '../../../definitions/constants';
 
@@ -24,13 +24,13 @@ export const Home: FC<{
     <Header as='h1' textAlign='center'>Select Training Time</Header>
     <Container>
       <div className='home-container'>
-      <Segment basic>
+      <div className='home-part-selection-wrapper'>
         <PartSelection
           isPartSelectionOpen={isPartSelectionOpen}
           handlePartSelection={handlePartSelection}
           handleCheckbox={handleCheckbox}
         />
-      </Segment>
+      </div>
         {MINUTES.map((minute, index) => (
           <div className='home-button-wrapper' key={minute}>
             <Button fluid 

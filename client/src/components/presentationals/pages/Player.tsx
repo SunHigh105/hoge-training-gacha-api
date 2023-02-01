@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Grid, Image, Header, Segment, Button, Icon } from 'semantic-ui-react';
+import { Grid, Image, Header, Button, Icon, Card } from 'semantic-ui-react';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
@@ -39,31 +39,33 @@ export const Player: FC<{
       ))}
     </Swiper> */}
     <Header as='h2' textAlign='center' dividing>Menu</Header>
-    <Grid>
+    <Card.Group>
       {menus.map(menu => (
-        <Grid.Row key={menu.videoId} columns={2}>
-          <Grid.Column width={5}>
-            <Image
-              as='a'
-              className='player-video-thumbnail'
-              href={`https://www.youtube.com/watch?v=${menu.videoId}`}
-              target='_blank'
-              rel='noreferrer'
-              src={menu.thumbnail}
-            />
-          </Grid.Column>
-          <Grid.Column width={11}>
+        <Card
+          key={menu.videoId}
+          fluid
+        >
+          <Card.Content>
             <a
-              className='player-video-title'
-              href={`https://www.youtube.com/watch?v=${menu.videoId}`}
+              className='player-card-link'
               target='_blank'
               rel='noreferrer'
+              href={`https://www.youtube.com/watch?v=${menu.videoId}`}
             >
-              {menu.title}
+              <Grid>
+                <Grid.Row key={menu.videoId} columns={2}>
+                  <Grid.Column width={6}>
+                    <Image src={menu.thumbnail} />
+                  </Grid.Column>
+                  <Grid.Column width={10}>
+                    <p className='player-menu-title'>{menu.title}</p>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
             </a>
-          </Grid.Column>
-        </Grid.Row>
+          </Card.Content>
+        </Card>
       ))}
-    </Grid>
+    </Card.Group>
   </div>
 );
