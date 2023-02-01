@@ -7,15 +7,16 @@
   text-align: center;
 }
 
-.player-video-thumbnail:hover {
-  opacity: 0.7;
-}
-
-.player-video-title,
-.player-video-title:hover {
+.player-card-link {
+  display: block;
   color: rgba(0,0,0,.87);
 }
 
-.player-video-title:hover {
-  text-decoration: underline;
+.player-card-link:hover {
+  color: rgba(0,0,0,.87);
+  opacity: 0.7;
+}
+
+.player-menu-title {
+  padding: 0.5em 0;
 }
