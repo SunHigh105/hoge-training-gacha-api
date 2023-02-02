@@ -10,7 +10,6 @@
   ```
   npm i -g firebase-tools
   ```
-
 ## Setup
 ### Firebase Project Setup
 #### Create Firebase Project
@@ -52,3 +51,6 @@ firebase login
 ```
 sh ./deploy_prod.sh
 ```
+
+## System Structure
+<img src='system_structure.png' />
