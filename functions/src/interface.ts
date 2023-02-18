@@ -1,6 +1,6 @@
 interface TrainingPattern {
-  muscle: Array<Number>,
-  cardio: Array<Number>
+  muscle: Array<number>,
+  cardio: Array<number>
 }
 
 interface Training {

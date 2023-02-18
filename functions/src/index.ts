@@ -1,4 +1,4 @@
-import * as functions from "firebase-functions";
+import * as functions from 'firebase-functions';
 
 require('dotenv').config();
 
@@ -9,7 +9,7 @@ const app = express();
 app.use(cors({
   origin: process.env.CLIENT_BASE_URL,
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
 }));
 
 const firestore = require('./firestore');
@@ -30,32 +30,32 @@ app.get('/training_menus', async (req: any, res: any) => {
     if (!constants.MINUTE_PATTERN[req.query.minute]) {
       throw new Error(`Request parameter "minute" is invalid value. Valid values: ${Object.keys(constants.MINUTE_PATTERN).join(', ')}`);
     }
-    
-    const muscleCategories = req.query.muscle
-      ? createMenu.getFilterdCategories(constants.CATEGORY_MUSCLE_TRAININGS, req.query.muscle)
-      : Object.values(constants.CATEGORY_MUSCLE_TRAININGS);
-    const cardioCategories = req.query.cardio
-      ? createMenu.getFilterdCategories(constants.CATEGORY_CARDIO_HIIT, req.query.cardio)
-      : Object.values(constants.CATEGORY_CARDIO_HIIT);
-    
+
+    const muscleCategories = req.query.muscle ?
+      createMenu.getFilterdCategories(constants.CATEGORY_MUSCLE_TRAININGS, req.query.muscle) :
+      Object.values(constants.CATEGORY_MUSCLE_TRAININGS);
+    const cardioCategories = req.query.cardio ?
+      createMenu.getFilterdCategories(constants.CATEGORY_CARDIO_HIIT, req.query.cardio) :
+      Object.values(constants.CATEGORY_CARDIO_HIIT);
+
     const minutePattern = constants.MINUTE_PATTERN[req.query.minute];
 
     const trainingList = await firestore.getData([...muscleCategories, ...cardioCategories]);
 
     const muscleTrainings = createMenu.createTrainingMenu(
-      trainingList,
-      minutePattern.muscle,
-      muscleCategories
+        trainingList,
+        minutePattern.muscle,
+        muscleCategories
     );
     const cardioHiits = createMenu.createTrainingMenu(
-      trainingList,
-      minutePattern.cardio,
-      cardioCategories
+        trainingList,
+        minutePattern.cardio,
+        cardioCategories
     );
 
     res.json({
       totalMinute: muscleTrainings.totalMinute + cardioHiits.totalMinute,
-      trainings: [...muscleTrainings.trainings, ...cardioHiits.trainings]
+      trainings: [...muscleTrainings.trainings, ...cardioHiits.trainings],
     });
   } catch (e) {
     if (e instanceof Error) {
@@ -64,10 +64,10 @@ app.get('/training_menus', async (req: any, res: any) => {
       return;
     }
     res.status(500);
-    res.json({error: "Unexpected error occured."});
+    res.json({error: 'Unexpected error occured.'});
   }
 });
 
 exports.app = functions
-  .https
-  .onRequest(app);
+    .https
+    .onRequest(app);

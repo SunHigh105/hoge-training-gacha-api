@@ -11,7 +11,7 @@ const CATEGORY_CARDIO_HIIT = {
 };
 
 const CATEGORY_STRETCH = {
-  strech: 'ストレッチ'
+  strech: 'ストレッチ',
 };
 
 const MINUTE_PATTERN = {
@@ -20,12 +20,12 @@ const MINUTE_PATTERN = {
   thirty: {muscle: 15, cardio: 15},
   forty: {muscle: 20, cardio: 20},
   fifty: {muscle: 20, cardio: 30},
-  sixty: {muscle: 30, cardio: 30}
-}
+  sixty: {muscle: 30, cardio: 30},
+};
 
 module.exports = {
   CATEGORY_MUSCLE_TRAININGS,
   CATEGORY_CARDIO_HIIT,
   CATEGORY_STRETCH,
   MINUTE_PATTERN,
-}
+};
