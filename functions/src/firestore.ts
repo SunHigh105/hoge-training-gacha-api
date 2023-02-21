@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const {getFirestore} = require('firebase-admin/firestore');
+const { getFirestore } = require('firebase-admin/firestore');
 
 const serviceAccount = require('../serviceAccount.json');
 
@@ -9,9 +9,10 @@ admin.initializeApp({
 
 const getData = async (categories: Array<string>) => {
   const db = getFirestore();
-  const snapshot = await db.collection('videos')
-      .where('category', 'in', categories)
-      .get();
+  const snapshot = await db
+    .collection('videos')
+    .where('category', 'in', categories)
+    .get();
 
   const result: Array<any> = [];
   snapshot.forEach((doc: any) => {

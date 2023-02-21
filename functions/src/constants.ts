@@ -15,12 +15,12 @@ const CATEGORY_STRETCH = {
 };
 
 const MINUTE_PATTERN = {
-  ten: {muscle: 5, cardio: 5},
-  twenty: {muscle: 10, cardio: 10},
-  thirty: {muscle: 15, cardio: 15},
-  forty: {muscle: 20, cardio: 20},
-  fifty: {muscle: 20, cardio: 30},
-  sixty: {muscle: 30, cardio: 30},
+  ten: { muscle: 5, cardio: 5 },
+  twenty: { muscle: 10, cardio: 10 },
+  thirty: { muscle: 15, cardio: 15 },
+  forty: { muscle: 20, cardio: 20 },
+  fifty: { muscle: 20, cardio: 30 },
+  sixty: { muscle: 30, cardio: 30 },
 };
 
 module.exports = {
