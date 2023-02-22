@@ -1,4 +1,4 @@
-const createTrainingMenu = (
+export const createTrainingMenu = (
   trainingList: Array<Training>,
   minute: number,
   categories: Array<string>
@@ -30,9 +30,9 @@ const createTrainingMenu = (
   return { totalMinute: totalMinute, trainings: trainings };
 };
 
-const getFilterdCategories = (
-  categories: Object,
-  filterCondition: Array<string>
+export const getFilterdCategories = (
+  categories: object,
+  filterCondition: Array<MuscleQuery|CardioQuery>
 ) => {
   return filterCondition.map((key: string) => {
     const index = Object.keys(categories).indexOf(key);
@@ -44,7 +44,3 @@ const getRandomValue = (max: number) => {
   return Math.ceil(Math.random() * max);
 };
 
-module.exports = {
-  createTrainingMenu,
-  getFilterdCategories,
-};
