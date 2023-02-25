@@ -1,9 +1,9 @@
 import * as functions from 'firebase-functions';
 
-require('dotenv').config();
+// require('dotenv').config();
 
-const express = require('express');
-const cors = require('cors');
+import express = require('express');
+import cors = require('cors');
 const app = express();
 
 app.use(
@@ -14,22 +14,22 @@ app.use(
   })
 );
 
-const firestore = require('./firestore');
-const createMenu = require('./createMenu');
-const constants = require('./constants');
+import * as firestore from './firestore';
+import * as createMenu from './createMenu';
+import * as constants from './constants';
 
 app.get('/', (res: any) => {
   res.send('Simple REST API');
 });
 
-app.get('/training_menus', async (req: any, res: any) => {
+app.get('/training_menus', async (req: RequestQuery, res: any) => {
   try {
     // Request validation
     // TODO: リクエストパラメータmuscle,cardioのバリデーション
     if (!req.query.minute) {
       throw new Error('Request parameter "minute" required.');
     }
-    if (!constants.MINUTE_PATTERN[req.query.minute]) {
+    if (req.query.minute) {
       throw new Error(
         `Request parameter "minute" is invalid value. Valid values: ${Object.keys(
           constants.MINUTE_PATTERN
@@ -59,12 +59,12 @@ app.get('/training_menus', async (req: any, res: any) => {
 
     const muscleTrainings = createMenu.createTrainingMenu(
       trainingList,
-      minutePattern.muscle,
+      minutePattern['muscle'],
       muscleCategories
     );
     const cardioHiits = createMenu.createTrainingMenu(
       trainingList,
-      minutePattern.cardio,
+      minutePattern['cardio'],
       cardioCategories
     );
 

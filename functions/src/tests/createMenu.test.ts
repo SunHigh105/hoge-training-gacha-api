@@ -1,5 +1,5 @@
-const createMenu = require('../createMenu');
-const trainingList = require('./json/trainingList.json');
+import * as createMenu from '../createMenu';
+import trainingList from './json/trainingList.json';
 
 describe('createTrainingMenu', () => {
   test('Category specified', () => {

@@ -12,3 +12,14 @@ interface Training {
   url: string;
   videoId: string;
 }
+
+type MinuteQuery = 'ten' | 'twenty' | 'thirty' | 'forty' | 'fifty' | 'sixty';
+type MuscleQuery = 'abs' | 'leg' | 'hip' | 'back';
+type CardioQuery = 'hiit' | 'cardio';
+interface RequestQuery {
+  query: {
+    minute: MinuteQuery;
+    muscle: Array<MuscleQuery>;
+    cardio: Array<CardioQuery>;
+  };
+}

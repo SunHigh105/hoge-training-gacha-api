@@ -32,7 +32,7 @@ export const createTrainingMenu = (
 
 export const getFilterdCategories = (
   categories: object,
-  filterCondition: Array<MuscleQuery|CardioQuery>
+  filterCondition: Array<MuscleQuery>|Array<CardioQuery>
 ) => {
   return filterCondition.map((key: string) => {
     const index = Object.keys(categories).indexOf(key);
@@ -43,4 +43,3 @@ export const getFilterdCategories = (
 const getRandomValue = (max: number) => {
   return Math.ceil(Math.random() * max);
 };
-
