@@ -1,7 +1,5 @@
 import * as functions from 'firebase-functions';
 
-// require('dotenv').config();
-
 import express = require('express');
 import cors = require('cors');
 const app = express();
@@ -18,10 +16,14 @@ import * as firestore from './firestore';
 import * as createMenu from './createMenu';
 import * as constants from './constants';
 
+import { RequestQuery } from './interface';
+
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 app.get('/', (res: any) => {
   res.send('Simple REST API');
 });
 
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 app.get('/training_menus', async (req: RequestQuery, res: any) => {
   try {
     // Request validation
@@ -29,12 +31,11 @@ app.get('/training_menus', async (req: RequestQuery, res: any) => {
     if (!req.query.minute) {
       throw new Error('Request parameter "minute" required.');
     }
-    if (req.query.minute) {
-      throw new Error(
-        `Request parameter "minute" is invalid value. Valid values: ${Object.keys(
-          constants.MINUTE_PATTERN
-        ).join(', ')}`
-      );
+
+    const minutePattern = constants.MINUTE_PATTERN[req.query.minute];
+
+    if (!minutePattern) {
+      throw new Error('Request parameter "minute" is invalid value.');
     }
 
     const muscleCategories = req.query.muscle
@@ -49,8 +50,6 @@ app.get('/training_menus', async (req: RequestQuery, res: any) => {
           req.query.cardio
         )
       : Object.values(constants.CATEGORY_CARDIO_HIIT);
-
-    const minutePattern = constants.MINUTE_PATTERN[req.query.minute];
 
     const trainingList = await firestore.getData([
       ...muscleCategories,
