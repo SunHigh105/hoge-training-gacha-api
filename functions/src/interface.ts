@@ -1,9 +1,9 @@
-interface TrainingPattern {
+export interface TrainingPattern {
   muscle: Array<number>;
   cardio: Array<number>;
 }
 
-interface Training {
+export interface Training {
   category: string;
   channelId: string;
   minute: string;
@@ -13,10 +13,10 @@ interface Training {
   videoId: string;
 }
 
-type MinuteQuery = 'ten' | 'twenty' | 'thirty' | 'forty' | 'fifty' | 'sixty';
-type MuscleQuery = 'abs' | 'leg' | 'hip' | 'back';
-type CardioQuery = 'hiit' | 'cardio';
-interface RequestQuery {
+export type MinuteQuery = 'ten' | 'twenty' | 'thirty' | 'forty' | 'fifty' | 'sixty';
+export type MuscleQuery = 'abs' | 'leg' | 'hip' | 'back';
+export type CardioQuery = 'hiit' | 'cardio';
+export interface RequestQuery {
   query: {
     minute: MinuteQuery;
     muscle: Array<MuscleQuery>;

@@ -1,3 +1,5 @@
+import { Training, MuscleQuery, CardioQuery } from "./interface";
+
 export const createTrainingMenu = (
   trainingList: Array<Training>,
   minute: number,
@@ -32,7 +34,7 @@ export const createTrainingMenu = (
 
 export const getFilterdCategories = (
   categories: object,
-  filterCondition: Array<MuscleQuery>|Array<CardioQuery>
+  filterCondition: Array<MuscleQuery> | Array<CardioQuery>
 ) => {
   return filterCondition.map((key: string) => {
     const index = Object.keys(categories).indexOf(key);

@@ -1,7 +1,7 @@
 import admin = require('firebase-admin');
 import { getFirestore } from 'firebase-admin/firestore';
 
-// TODO: import serviceAccount from '../serviceAccount.json';
+/* eslint-disable-next-line @typescript-eslint/no-var-requires */
 const serviceAccount = require('../serviceAccount.json');
 
 admin.initializeApp({
@@ -15,8 +15,8 @@ export const getData = async (categories: Array<string>) => {
     .where('category', 'in', categories)
     .get();
 
-  const result: Array<any> = [];
-  snapshot.forEach((doc: any) => {
+  const result: Array<FirebaseFirestore.DocumentData> = [];
+  snapshot.forEach((doc: FirebaseFirestore.DocumentData) => {
     result.push(doc.data());
   });
 
