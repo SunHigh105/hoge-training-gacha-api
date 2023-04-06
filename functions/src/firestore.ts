@@ -15,8 +15,10 @@ export const getData = async (categories: Array<string>) => {
     .where('category', 'in', categories)
     .get();
 
-  const result: Array<FirebaseFirestore.DocumentData> = [];
-  snapshot.forEach((doc: FirebaseFirestore.DocumentData) => {
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const result: Array<any> = [];
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  snapshot.forEach((doc: any) => {
     result.push(doc.data());
   });
 
