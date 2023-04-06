@@ -1,4 +1,4 @@
-import { Training, MuscleQuery, CardioQuery } from "./interface";
+import { Training, MuscleQuery, CardioQuery } from './interface';
 
 export const createTrainingMenu = (
   trainingList: Array<Training>,

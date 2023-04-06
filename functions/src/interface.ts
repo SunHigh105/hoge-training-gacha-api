@@ -13,7 +13,13 @@ export interface Training {
   videoId: string;
 }
 
-export type MinuteQuery = 'ten' | 'twenty' | 'thirty' | 'forty' | 'fifty' | 'sixty';
+export type MinuteQuery =
+  | 'ten'
+  | 'twenty'
+  | 'thirty'
+  | 'forty'
+  | 'fifty'
+  | 'sixty';
 export type MuscleQuery = 'abs' | 'leg' | 'hip' | 'back';
 export type CardioQuery = 'hiit' | 'cardio';
 export interface RequestQuery {
